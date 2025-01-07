@@ -13,46 +13,49 @@ def home():
             <title>Finance Calculator</title>
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
             <style>
-    body {
-        margin: 0;
-        padding: 0;
-        background-image: url('https://www.portotheme.com/wp-content/uploads/2024/05/robot-arm-ai-analyzing-mathematics-mechanized-industry-problem-solving.webp');
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        min-height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-family: Arial, sans-serif;
-    }
-    .container {
-        background: rgba(0, 0, 0, 0.8); /* Adjusted darker overlay */
-        padding: 20px;
-        border-radius: 10px;
-        width: 100%;
-        max-width: 600px;
-        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
-    }
-    h1 {
-        text-align: center;
-        color: white;
-        margin-bottom: 20px;
-    }
-    .btn {
-        margin-bottom: 15px;
-    }
-    form {
-        color: white;
-    }
-    #calculator-container h3 {
-        text-align: center;
-        margin-top: 20px;
-        color: #00ff00; /* Green color for the result */
-    }
-</style>
-
-
+                body {
+                    margin: 0;
+                    padding: 0;
+                    background-image: url('https://www.portotheme.com/wp-content/uploads/2024/05/robot-arm-ai-analyzing-mathematics-mechanized-industry-problem-solving.webp');
+                    background-size: cover;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    min-height: 100vh;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    font-family: Arial, sans-serif;
+                }
+                .container {
+                    background: rgba(0, 0, 0, 0.8);
+                    padding: 20px;
+                    border-radius: 10px;
+                    width: 100%;
+                    max-width: 600px;
+                    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+                }
+                h1 {
+                    text-align: center;
+                    color: white;
+                    margin-bottom: 20px;
+                }
+                .btn {
+                    margin-bottom: 15px;
+                }
+                form {
+                    color: white;
+                }
+                #calculator-container h3 {
+                    text-align: center;
+                    margin-top: 20px;
+                    color: #00ff00;
+                }
+                footer {
+                    text-align: center;
+                    color: white;
+                    margin-top: 20px;
+                }
+            </style>
         </head>
         <body>
             <div class="container">
@@ -64,6 +67,10 @@ def home():
                 <button class="btn btn-secondary w-100" onclick="showCalculator('basic')">Basic Calculator</button>
 
                 <div id="calculator-container" class="mt-4"></div>
+
+                <footer>
+                    Created by Pandurenga
+                </footer>
             </div>
 
             <script>
@@ -135,8 +142,8 @@ def compound_interest():
 def emi():
     if request.method == 'POST':
         principal = float(request.form['principal'])
-        rate = float(request.form['rate']) / (12 * 100)  # Monthly interest rate
-        tenure = int(request.form['tenure'])  # Tenure in months
+        rate = float(request.form['rate']) / (12 * 100)
+        tenure = int(request.form['tenure'])
         emi = (principal * rate * ((1 + rate) ** tenure)) / (((1 + rate) ** tenure) - 1)
         return jsonify(result=f"EMI = {emi}")
     return '''
